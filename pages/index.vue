@@ -1,12 +1,11 @@
 <template>
   <SearchInput />
-  <ul>
-    <GamesListCard />
-  </ul>
+  <GamesList />
 </template>
 
 <script setup lang="ts">
 import SearchInput from '~/components/SearchInput.vue'
+import GamesList from '~/components/GamesList.vue'
 </script>
 
 <style lang="scss">
