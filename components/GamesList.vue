@@ -1,8 +1,9 @@
 <template>
-  <ul class="my-2 flex">
+  <ul class="my-2 flex flex-wrap">
     <GamesListCard
-      v-for="(game, index) in games"
-      :key="index"
+      v-for="(game, index) in searchedGames"
+      :key="`${game?.id}-${index}`"
+      v-bind="game"
     />
   </ul>
 </template>
@@ -12,9 +13,9 @@ import { onMounted } from "vue";
 import { useGamesStore } from '@/stores/games'
 import { storeToRefs } from 'pinia'
 
-const store = useGamesStore();
-const { games } = storeToRefs(store)
-const { getAllGames } = store
+const gamesStore = useGamesStore();
+const { searchedGames } = storeToRefs(gamesStore);
+const { getAllGames } = gamesStore;
 
 onMounted(async () => {
   await getAllGames()

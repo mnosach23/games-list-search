@@ -17,6 +17,7 @@
       </svg>
 
       <input
+        v-model="searchQuery"
         type="text"
         class="ease w-full cursor-pointer rounded-md border border-[#09170E] bg-[#132118] py-2 pl-14 pr-4 text-sm text-white/50 shadow-sm transition duration-300 placeholder:uppercase placeholder:text-white/50 hover:border-slate-400 focus:border-slate-400 focus:shadow focus:outline-none"
         placeholder="Search your game By NAME OR PROVIDER"
@@ -26,7 +27,11 @@
 </template>
 
 <script setup lang="ts">
+import { storeToRefs } from "pinia";
+import { useGamesStore } from '@/stores/games';
 
+const gamesStore = useGamesStore();
+const { searchQuery } = storeToRefs(gamesStore)
 </script>
 
 <style lang="scss">
