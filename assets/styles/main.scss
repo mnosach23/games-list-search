@@ -3,3 +3,11 @@
 body {
   background: linear-gradient(to right, #002F23 0%, #004736 20%, #004736 80%, #002F23 100%);
 }
+
+li {
+  width: calc((100% - 81.25px) / 6);
+
+  &:nth-child(6n) {
+    margin-right: unset;
+  }
+}

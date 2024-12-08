@@ -27,10 +27,10 @@
 </template>
 
 <script setup lang="ts">
-import { storeToRefs } from "pinia";
-import { useGamesStore } from '@/stores/games';
+import { storeToRefs } from 'pinia'
+import { useGamesStore } from '@/stores/games'
 
-const gamesStore = useGamesStore();
+const gamesStore = useGamesStore()
 const { searchQuery } = storeToRefs(gamesStore)
 </script>
 
