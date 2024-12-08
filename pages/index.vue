@@ -7,7 +7,3 @@
 import SearchInput from '~/components/SearchInput.vue'
 import GamesList from '~/components/GamesList.vue'
 </script>
-
-<style lang="scss">
-
-</style>

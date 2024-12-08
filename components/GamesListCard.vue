@@ -3,7 +3,7 @@
     <img
       class="absolute size-full rounded-xl border-[3px] border-[#2D4234]"
       :src="imageLocation"
-      alt=""
+      :alt="title"
     >
   </li>
 </template>
@@ -11,27 +11,19 @@
 <script setup lang="ts">
 const props = defineProps<{
   id: string
-  title?: string
-  provider?: string
-  collections?: object
-  real?: string
-  demo?: string
+  title: string
 }>()
 
 const breakpointsClasses = computed(() => {
-  return 'xxs:mr-[8px] xxs:mt-[8px] xxs:size-[144px] ' +
-      'xs:mr-[8.03px] xs:mt-[8.36px] xs:size-[175px] ' +
-      'sm:mr-[8px] sm:mt-[8px] sm:size-[174px] ' +
-      'md:mr-[15.92px] md:mt-[16px] md:h-[272px] md:w-[228px] ' +
-      'lg:mr-[8px] lg:mt-[16px] lg:size-[196px] ' +
-      'xl:mr-[15.74px] xl:mt-[24px] xl:h-[194px] xl:w-[207px] ' +
-      'xxl:mr-[16.25px] xxl:mt-[16px] xxl:size-[286px]'
+  return 'xxs:mr-[6pt] xxs:mt-[6pt] xxs:size-[108pt] '
+    + 'xs:mr-[6.02pt] xs:mt-[6.27pt] xs:size-[131.27pt] '
+    + 'sm:mr-[6pt] sm:mt-[6pt] sm:size-[130.5pt] '
+    + 'md:mr-[11.95pt] md:mt-[12pt] md:h-[204pt] md:w-[171pt] '
+    + 'lg:mr-[6pt] lg:mt-[12pt] lg:size-[147pt] '
+    + 'xl:mr-[11.81pt] xl:mt-[18pt] xl:h-[145.5pt] xl:w-[155.25pt] '
+    + 'xxl:mr-[12.19pt] xxl:mt-[12pt] xxl:size-[214.5pt]'
 })
 const imageLocation = computed(() => {
   return new URL(`../assets/logos/${props.id.replace('/', ':')}.webp`, import.meta.url).href
 })
 </script>
-
-<style lang="scss">
-
-</style>

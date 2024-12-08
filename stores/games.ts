@@ -5,6 +5,7 @@ import type { Game } from '~/@types/game'
 export const useGamesStore = defineStore('games', () => {
   const games = ref<Game[]>([])
   const searchQuery = ref('')
+  const isLoadingGames = ref(false)
 
   const searchedGames = computed(() => {
     if (!searchQuery.value) return games.value
@@ -19,13 +20,17 @@ export const useGamesStore = defineStore('games', () => {
 
   async function getAllGames(): Promise<void> {
     try {
+      isLoadingGames.value = true
       const response: Response = await fetch('/api/all-games')
       games.value = await response.json()
     }
     catch (error) {
       console.error('Error fetching games:', error)
     }
+    finally {
+      isLoadingGames.value = false
+    }
   }
 
-  return { getAllGames, searchQuery, searchedGames }
+  return { games, getAllGames, searchQuery, searchedGames, isLoadingGames }
 })

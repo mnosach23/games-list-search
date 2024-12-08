@@ -1,25 +1,12 @@
 <template>
-  <div class="w-full min-w-[200px] cursor-pointer">
+  <div class="w-full min-w-[150pt] cursor-pointer">
     <div class="relative">
-      <svg
-        class="absolute left-5 top-2.5 size-5"
-        width="28"
-        height="28"
-        viewBox="0 0 28 28"
-        fill="#ffffff"
-        fill-opacity="50%"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M12.6667 0.666668C19.2907 0.666668 24.6667 6.04267 24.6667 12.6667C24.6667 19.2907 19.2907 24.6667 12.6667 24.6667C6.04267 24.6667 0.666668 19.2907 0.666668 12.6667C0.666668 6.04267 6.04267 0.666668 12.6667 0.666668ZM12.6667 22C17.8227 22 22 17.8227 22 12.6667C22 7.50933 17.8227 3.33333 12.6667 3.33333C7.50933 3.33333 3.33333 7.50933 3.33333 12.6667C3.33333 17.8227 7.50933 22 12.6667 22ZM23.98 22.0947L27.752 25.8653L25.8653 27.752L22.0947 23.98L23.98 22.0947V22.0947Z"
-          fill="white"
-        />
-      </svg>
+      <SearchSvg />
 
       <input
         v-model="searchQuery"
         type="text"
-        class="ease w-full cursor-pointer rounded-md border border-[#09170E] bg-[#132118] py-2 pl-14 pr-4 text-sm text-white/50 shadow-sm transition duration-300 placeholder:uppercase placeholder:text-white/50 hover:border-slate-400 focus:border-slate-400 focus:shadow focus:outline-none"
+        :class="`${inputClasses}`"
         placeholder="Search your game By NAME OR PROVIDER"
       >
     </div>
@@ -29,11 +16,15 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { useGamesStore } from '@/stores/games'
+import SearchSvg from '~/components/SearchSvg.vue'
 
 const gamesStore = useGamesStore()
 const { searchQuery } = storeToRefs(gamesStore)
+
+const inputClasses = computed(() => {
+  return 'ease w-full cursor-pointer rounded-md border border-[#09170E] bg-[#132118] py-2 pl-14 pr-4 '
+    + 'text-sm text-white/50 shadow-sm transition duration-300 placeholder:uppercase '
+    + 'placeholder:text-white/50 hover:border-slate-400 focus:border-slate-400 focus:shadow '
+    + 'focus:outline-none xxs:text-[10px]'
+})
 </script>
-
-<style lang="scss">
-
-</style>
